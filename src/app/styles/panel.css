@@ -1,0 +1,274 @@
+.panel {
+  height: 100%;
+  width: 320px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 0;
+  z-index: 10;
+  background: #fff;
+  display: flex;
+  flex-flow: column;
+  box-shadow: 8px 0 16px rgba(0, 0, 0, 0.16);
+}
+
+.panel-header {
+  display: flex;
+  align-content: center;
+  padding: 8px 12px 8px 8px;
+  margin-bottom: 8px;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.panel-header__action {
+  margin-right: 8px;
+}
+
+.panel-header__title {
+  flex: 1;
+  font-weight: 400;
+  font-size: 13px;
+  color: #333;
+  display: flex;
+  align-items: center;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.panel-collapse-icon {
+  width: 16px;
+}
+
+.panel-body {
+  flex: 1;
+  overflow-y: auto;
+}
+
+.panel-body-errors {
+  /* padding-top: 8px; */
+  /* height: 100%; */
+}
+
+.panel-footer {
+  border-top: 1px solid #e5e5e5;
+  padding: 16px;
+  display: flex;
+  align-items: center;
+}
+
+.panel-footer .previous {
+  margin: 0 8px 0 0;
+}
+
+.panel-footer .next {
+  margin: 0 0 0 8px;
+}
+
+.is-visible {
+  transform: translateX(0);
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 1);
+  height: 100%;
+  width: 100%;
+  animation: fadeIn 150ms;
+  animation-fill-mode: forwards;
+  cursor: pointer;
+  z-index: 5;
+  transition: background 150ms ease;
+}
+
+.overlay:hover {
+  background: rgba(0, 0, 0, 0.9);
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 0.5;
+  }
+}
+
+.error-label {
+  color: #fe6262;
+  height: 32px;
+  padding: 0 16px;
+  font-weight: 500;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+}
+
+.errors-list {
+  margin: 0;
+  padding: 0 16px 6px;
+}
+
+.error-list-item {
+  position: relative;
+  padding: 12px 16px 12px 12px;
+  border: 1px solid #e5e5e5;
+  color: #333333;
+  margin-bottom: 12px;
+  border-radius: 12px;
+  display: flex;
+  flex-flow: row wrap;
+  align-content: center;
+  justify-content: center;
+  font-size: 11px;
+  line-height: 13px;
+  font-weight: 600;
+  transition: border-color 100ms ease;
+}
+
+.error-list-item:hover {
+  border-color: #18a0fb;
+  cursor: pointer;
+}
+
+.flex-row {
+  width: 100%;
+  display: flex;
+  flex-flow: row;
+}
+
+.label {
+  font-size: 12px;
+  color: #9f9f9f;
+  font-weight: 400;
+  margin: 8px 0 2px;
+}
+
+/* The content of the error, could be #fff, a font name, etc. */
+.current-value {
+  margin-top: 4px;
+  width: 100%;
+  color: #666;
+  font-size: 11px;
+  line-height: 14px;
+  font-weight: 400;
+}
+
+.error-description {
+  align-self: center;
+  margin-left: 12px;
+}
+
+.error-type {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  height: 30px;
+  width: 30px;
+  flex-basis: 30px;
+  flex-shrink: 0;
+  background: #f6f6f6;
+  align-self: center;
+  border-radius: 64px;
+}
+
+.error-type img {
+  display: inline-block;
+  margin: auto;
+  height: 12px;
+  width: 12px;
+}
+
+.context-icon {
+  align-self: flex-end;
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-left: auto;
+  cursor: pointer;
+}
+
+.success-message {
+  border: 1px solid #e5e5e5;
+  border-radius: 6px;
+  text-align: center;
+  font-size: 13px;
+  padding: 40px 0;
+  margin: 16px;
+  margin-top: 8px;
+  color: #333;
+}
+
+.success-shape {
+  background-color: #18a0fb;
+  border-radius: 80px;
+  height: 64px;
+  width: 64px;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  margin-bottom: 24px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.success-icon {
+  margin: auto;
+  height: 32px;
+  width: 32px;
+}
+.settings-wrapper {
+  padding: 4px 16px 16px;
+  overflow: scroll;
+}
+
+.form-button-group {
+  padding-top: 8px;
+  display: flex;
+  flex-flow: row;
+}
+
+.form-button-group button {
+  margin-right: 12px;
+}
+
+.settings-row {
+  margin-bottom: 24px;
+}
+
+.settings-title {
+  font-size: 13px;
+  font-weight: 500;
+  color: #333333;
+  padding-bottom: 8px;
+  margin: 0;
+}
+
+.settings-label {
+  display: block;
+  font-size: 11px;
+  line-height: 1.4;
+  color: #333333;
+  padding-bottom: 12px;
+}
+
+.settings-input {
+  width: 100%;
+  margin-bottom: 8px;
+  padding: 8px;
+  border-radius: 2px;
+  background: #ffffff;
+  border: 1px solid #f0f0f0;
+  box-sizing: border-box;
+  font-size: 11px;
+  line-height: 14px;
+  letter-spacing: 0.01em;
+}
+
+.settings-input:focus {
+  border: 1px solid #18a0fb;
+  border-radius: 2px;
+}
