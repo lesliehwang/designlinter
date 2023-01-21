@@ -21,7 +21,7 @@ function Navigation(props) {
     return (React.createElement("div", { key: "nav" },
         React.createElement("div", { className: "navigation-wrapper" },
             React.createElement("nav", { className: "nav" },
-                React.createElement("div", { className: `nav-item ${activePage === "layers" ? "active" : ""}`, onClick: layersClick }, "Layers"),
+                React.createElement("div", { className: `nav-item ${activePage === "layers" ? "active" : ""}`, onClick: layersClick }, "Error by Layers"),
                 React.createElement("div", { className: `nav-item ${activePage === "bulk" ? "active" : ""}`, onClick: bulkListClick }, "Errors by Category"),
                 React.createElement("div", { className: "nav-icon-wrapper" },
                     React.createElement("button", { className: "icon icon--refresh icon--button settings-button", onClick: event => {

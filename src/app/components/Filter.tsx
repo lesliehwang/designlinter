@@ -149,6 +149,47 @@ function Filter(props) {
       <div className="flex-container filter">
         <div className="instructions"></div>
 
+
+
+        <label className="all">
+          <input type="checkbox" checked={allCheckbox} onChange={handleChangeAll} name="tag" value="all" /> <span className="tag">All</span>
+        </label>
+        <div id="filter-divider">|</div>
+
+        <label className="fill">
+          <input type="checkbox" checked={colorCheckbox} onChange={handleChangeColor} name="tag" value="fill" /><span className="tag">Fill</span>
+        </label>
+
+        <label className="stroke">
+          <input type="checkbox" checked={strokeCheckbox} onChange={handleChangeStroke} name="tag" value="stroke" /><span className="tag">Stroke</span>
+        </label>
+
+        <label className="typography">
+          <input type="checkbox" checked={typeCheckbox} onChange={handleChangeType} name="tag" value="typography" /><span className="tag">Typography</span>
+        </label>
+
+        <label className="effects">
+          <input type="checkbox" checked={effectsCheckbox} onChange={handleChangeEffects} name="tag" value="effects" /><span className="tag">Effects</span>
+        </label>
+
+        <label className="radius">
+          <input type="checkbox" checked={radiusCheckbox} onChange={handleChangeRadius} name="tag" value="radius" /><span className="tag">Radius</span>
+        </label>
+
+        {/* 
+          <input
+            type="checkbox"
+            className="allTest"
+            checked={allCheckbox}
+            onChange={handleChangeAll}
+          /> <span>ALL!!</span> 
+
+        <input
+          type="checkbox"
+          checked={colorCheckbox}
+          onChange={handleChangeColor}
+        /> <span>COLOR!!</span>
+
         <div className="checkbox-element">
           <input
             type="checkbox"
@@ -201,7 +242,8 @@ function Filter(props) {
             onChange={handleChangeRadius}
           />
           <label> Radius</label>
-        </div>
+        </div> */}
+
       </div>
       <div className="bulk-errors-list">
         <BulkErrorList
@@ -216,7 +258,7 @@ function Filter(props) {
       </div>
 
       <div className="footer sticky-footer">
-        <TotalErrorCount errorArray={bulkErrorListToPass} />
+        <TotalErrorCount errorArray={filteredErrorArray} />
       </div>
     </div>
   );

@@ -1,7 +1,6 @@
 import * as React from "react";
 import { useState, useRef, useEffect } from "react";
 function Menu(props) {
-    console.log("***** IN THE MENU ******");
     const ref = useRef();
     const [menuState, setMenuState] = useState(false);
     useOnClickOutside(ref, () => hideMenu());

@@ -40,12 +40,10 @@ const App = ({}) => {
     });
     const updateSelectedList = id => {
         setSelectedListItem(selectedListItems => {
-            console.log("UI -- setSelectedListItem");
             selectedListItems.splice(0, selectedListItems.length);
             return selectedListItems.concat(id);
         });
         setActiveNodeIds(activeNodeIds => {
-            console.log("UI -- setActiveNodeIds");
             if (activeNodeIds.includes(id)) {
                 if (activeNodeIds.length !== 1) {
                     return activeNodeIds.filter(activeNodeId => activeNodeId !== id);
@@ -58,7 +56,6 @@ const App = ({}) => {
         });
     };
     const updateNavigation = page => {
-        console.log("UI -- updatedNavigation");
         setActivePage(page);
         parent.postMessage({
             pluginMessage: {
@@ -68,15 +65,12 @@ const App = ({}) => {
         }, "*");
     };
     const updateActiveError = error => {
-        console.log("UI -- updateActiveError");
         setActiveError(error);
     };
     const ignoreAll = errors => {
-        console.log("UI -- ignoreAll");
         setIgnoreErrorArray(ignoredErrorArray => [...ignoredErrorArray, ...errors]);
     };
     const updateIgnoredErrors = error => {
-        console.log("UI -- updatedIgnoredErrors");
         if (ignoredErrorArray.some(e => e.node.id === error.node.id)) {
             if (ignoredErrorArray.some(e => e.value === error.value)) {
                 return;
@@ -90,15 +84,12 @@ const App = ({}) => {
         }
     };
     const updateErrorArray = errors => {
-        console.log("UI -- updateErrorArray");
         setErrorArray(errors);
     };
     const updateVisible = val => {
-        console.log("UI -- updateVisible");
         setIsVisible(val);
     };
     const updateLintRules = boolean => {
-        console.log("UI -- updatedLintRules");
         setLintVectors(boolean);
         parent.postMessage({
             pluginMessage: {
@@ -108,17 +99,14 @@ const App = ({}) => {
         }, "*");
     };
     const onFocus = () => {
-        console.log("UI -- onFocus");
         newWindowFocus = true;
         counter = 0;
     };
     const onBlur = () => {
-        console.log("UI -- onBlur");
         newWindowFocus = false;
         pollForChanges();
     };
     const onRunApp = React.useCallback(() => {
-        console.log("UI -- onRunApp");
         parent.postMessage({ pluginMessage: { type: "run-app", lintVectors: lintVectors } }, "*");
     }, []);
     function pollForChanges() {
@@ -132,7 +120,6 @@ const App = ({}) => {
         }
     }
     function updateVisibility() {
-        console.log("UI -- updateVisibility");
         if (isVisible === true) {
             setIsVisible(false);
         }
@@ -144,7 +131,6 @@ const App = ({}) => {
         setTimeLoad(true);
     }, 3000);
     React.useEffect(() => {
-        console.log("UI -- updating client storage");
         if (initialLoad !== false && ignoredErrorArray.length) {
             parent.postMessage({
                 pluginMessage: {

@@ -1,4 +1,4 @@
-import { checkRadius, checkEffects, checkFills, checkStrokes, checkType, } from "./lintingFunctions";
+import { checkRadius, checkEffects, checkFills, checkStrokes, checkType } from "./lintingFunctions";
 figma.showUI(__html__, { width: 360, height: 580 });
 let borderRadiusArray = [0, 2, 4, 8, 16, 24, 32];
 let originalNodeTree = [];
@@ -7,14 +7,12 @@ let lockedLogo = [];
 figma.skipInvisibleInstanceChildren = true;
 figma.ui.onmessage = msg => {
     if (msg.type === "close") {
-        console.log("msg.type = close");
         for (let i = 0; i < lockedLogo.length; i++) {
             lockedLogo[i].locked = false;
         }
         figma.closePlugin();
     }
     if (msg.type === "fetch-layer-data") {
-        console.log("msg.type = fetch-layer-data -> " + msg.id);
         let layer = figma.getNodeById(msg.id);
         let layerArray = [];
         layerArray.push(layer);
@@ -39,19 +37,16 @@ figma.ui.onmessage = msg => {
         });
     }
     if (msg.type === "update-errors") {
-        console.log("msg.type = update-errors");
         figma.ui.postMessage({
             type: "updated errors",
             errors: lint(originalNodeTree)
         });
     }
     if (msg.type === "update-storage") {
-        console.log("msg.type = update-storage");
         let arrayToBeStored = JSON.stringify(msg.storageArray);
         figma.clientStorage.setAsync("storedErrorsToIgnore", arrayToBeStored);
     }
     if (msg.type === "update-storage-from-settings") {
-        console.log("msg.type = update-storage-from-settings");
         let arrayToBeStored = JSON.stringify(msg.storageArray);
         figma.clientStorage.setAsync("storedErrorsToIgnore", arrayToBeStored);
         figma.ui.postMessage({
@@ -61,16 +56,13 @@ figma.ui.onmessage = msg => {
         figma.notify("Cleared ignored errors", { timeout: 1000 });
     }
     if (msg.type === "update-active-page-in-settings") {
-        console.log("msg.type = update-active-page-in-settings");
         let pageToBeStored = JSON.stringify(msg.page);
         figma.clientStorage.setAsync("storedActivePage", pageToBeStored);
     }
     if (msg.type === "update-lint-rules-from-settings") {
-        console.log("msg.type = update-lint-rules-from-settings");
         lintVectors = msg.boolean;
     }
     if (msg.type === "update-border-radius") {
-        console.log("msg.type = update-border-radius");
         let newString = msg.radiusValues.replace(/\s+/g, "");
         let newRadiusArray = newString.split(",");
         newRadiusArray = newRadiusArray
@@ -89,7 +81,6 @@ figma.ui.onmessage = msg => {
         figma.notify("Saved new border radius values", { timeout: 1000 });
     }
     if (msg.type === "reset-border-radius") {
-        console.log("msg.type = reset-border-radius");
         borderRadiusArray = [0, 2, 4, 8, 16, 24, 32];
         figma.clientStorage.setAsync("storedRadiusValues", []);
         figma.ui.postMessage({
@@ -99,7 +90,6 @@ figma.ui.onmessage = msg => {
         figma.notify("Reset border radius value", { timeout: 1000 });
     }
     if (msg.type === "select-multiple-layers") {
-        console.log("msg.type = select-multiple-layers");
         const layerArray = msg.nodeArray;
         let nodesToBeSelected = [];
         layerArray.forEach(item => {
@@ -183,7 +173,6 @@ figma.ui.onmessage = msg => {
         }
     }
     if (msg.type === "lint-all") {
-        console.log("msg.type = lint-all");
         figma.ui.postMessage({
             type: "complete",
             errors: lint(originalNodeTree),
@@ -194,7 +183,6 @@ figma.ui.onmessage = msg => {
         });
     }
     if (msg.type === "run-app") {
-        console.log("msg.type = run-app");
         if (figma.currentPage.selection.length === 0) {
             figma.notify("Select a frame(s) to get started", { timeout: 2000 });
             return;
